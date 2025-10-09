@@ -22,6 +22,7 @@ ex_demos/gs_cpp/
 ex_demos/gs_static_lib/
 a - impl.o
 ex_demos/imgui/
+ex_demos/learn_ogl/00/
 ex_demos/microui/
 ex_demos/nuklear_gui/
 ex_util_ai/behavior_tree/
@@ -33,7 +34,6 @@ ex_util_gui/gs_gui/
 ex_util_gui/style_sheets/
 ex_util_gui/ui_ex/
 ex_util_immediate_draw/immediate_draw/
-ex_util_immediate_draw/lines/
 ex_util_meta/meta_class/
 ex_util_physics/collision_detection/
 ex_util_physics/ray_cast/

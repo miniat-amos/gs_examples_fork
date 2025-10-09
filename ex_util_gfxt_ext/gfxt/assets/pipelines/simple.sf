@@ -4,17 +4,14 @@
 
 pipeline { 
 
-    raster 
-    { 
+    raster { 
         primitive: TRIANGLES
         index_buffer_element_size: UINT32
     },
 
-    depth 
-    {
+    depth {
         func: LESS 
-    },
-
+    }, 
 
     shader { 
     
@@ -48,6 +45,7 @@ pipeline {
 
             uniforms {
                 mat4 u_mvp;
+                float u_time;
             },
 
             out {
@@ -57,7 +55,14 @@ pipeline {
 
             code { 
                 void main() {
-                    gl_Position = u_mvp * vec4(a_position, 1.0);
+                    // gl_Position = u_mvp * vec4(a_position, 1.0);
+                    float l = sin(u_time) * 0.5 + 0.5;
+                    vec2 in_uv = clamp(a_uv, 0.0, 1.0);
+                    float s = 10.0;
+                    vec2 b = vec2(-s * 0.6, -s * 0.25);//-s * 0.5;
+                    in_uv = vec2(1, -1) * (in_uv * s + b) * vec2(2, 2) - vec2(1, 1);
+                    gl_Position = u_mvp * vec4(mix(a_position, vec3(in_uv.x, in_uv.y, 0.0), l), 1.0);
+                    // gl_Position = u_mvp * vec4(a_position, 1.0);
                     uv = a_uv;
                     position = a_position;
                 }
@@ -77,6 +82,7 @@ pipeline {
             code {
                 void main() {
                     frag_color = texture(u_tex, uv);
+                    // frag_color = vec4(1.0, 0.0, 0.0, 1.0);
                 }
             }
         } 

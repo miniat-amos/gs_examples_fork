@@ -14,12 +14,13 @@ flags=(
 # Include directories
 inc=(
 	-I ../../../third_party/include/			# Gunslinger includes
-    -I ../external/
+	-I ../external/			
 )
 
 # Source files
 src=(
-	../source/main.c ../external/flecs/flecs.c
+	../source/main.c
+	../external/flecs/flecs.c
 )
 
 libs=(
@@ -28,12 +29,13 @@ libs=(
 	-luser32 
 	-lshell32 
 	-lgdi32 
-	-lWinmm
+    -lWinmm
 	-lAdvapi32
+	-pthread
 )
 
 # Build
-gcc -O3 ${inc[*]} ${src[*]} ${flags[*]} ${libs[*]} -lm -o ${proj_name}
+gcc -O0 ${inc[*]} ${src[*]} ${flags[*]} ${libs[*]} -lm -o ${proj_name}
 
 cd ..
 

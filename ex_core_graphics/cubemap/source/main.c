@@ -74,7 +74,7 @@ void app_init()
         .type = GS_GRAPHICS_TEXTURE_CUBEMAP,
         .width = tdata[0].width,
         .height = tdata[0].height,
-        .format = tdata[0].ncomps == 3 ? GS_GRAPHICS_TEXTURE_FORMAT_RGB8 : GS_GRAPHICS_TEXTURE_FORMAT_RGBA8,
+        .format = GS_GRAPHICS_TEXTURE_FORMAT_RGBA8,
         .min_filter = GS_GRAPHICS_TEXTURE_FILTER_NEAREST,
         .mag_filter = GS_GRAPHICS_TEXTURE_FILTER_NEAREST,
         .wrap_s = GS_GRAPHICS_TEXTURE_WRAP_CLAMP_TO_EDGE,

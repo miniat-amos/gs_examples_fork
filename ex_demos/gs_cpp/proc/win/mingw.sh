@@ -18,7 +18,7 @@ inc=(
 
 # Source files
 src=(
-    ../src/main.cpp
+    ../src/*.cpp
 )
 
 libs=(
@@ -29,12 +29,10 @@ libs=(
     -lgdi32 
     -lWinmm
     -lAdvapi32
+    -pthread
 )
 
 # Build
 g++ -O0 ${inc[*]} ${src[*]} ${flags[*]} ${libs[*]} -lm -o ${proj_name}
 
 cd ..
-
-
-

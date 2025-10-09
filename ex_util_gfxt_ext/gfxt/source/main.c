@@ -38,7 +38,8 @@ void app_init()
     });
 
     // Create mesh that uses the layout from the pipeline's requested mesh layout 
-    gs_snprintf(TMP, sizeof(TMP), "%s/%s", app->asset_dir, "meshes/Duck.gltf");
+    // gs_snprintf(TMP, sizeof(TMP), "%s/%s", app->asset_dir, "meshes/Duck.gltf");
+    gs_snprintf(TMP, sizeof(TMP), "%s/%s", app->asset_dir, "meshes/icosphere.gltf");
     app->mesh = gs_gfxt_mesh_load_from_file(TMP, &(gs_gfxt_mesh_import_options_t){
         .layout = app->pip.mesh_layout,
         .size = gs_dyn_array_size(app->pip.mesh_layout) * sizeof(gs_gfxt_mesh_layout_t),
@@ -73,8 +74,9 @@ void app_update()
     cam.transform.position = gs_v3(0.f, 6.f, 20.f);
     gs_mat4 model = gs_vqs_to_mat4(&(gs_vqs){
         .translation = gs_v3(0.f, 0.f, -10.f), 
-        .rotation = gs_quat_angle_axis(_t, GS_YAXIS), 
-        .scale = gs_v3s(0.1f)
+        .rotation = gs_quat_default(),// gs_quat_angle_axis(_t, GS_YAXIS), 
+        // .scale = gs_v3s(0.1f)
+        .scale = gs_v3s(10.0f)
     }); 
     gs_mat4 vp = gs_camera_get_view_projection(&cam, fbs.x, fbs.y); 
     gs_mat4 mvp = gs_mat4_mul(vp, model);
@@ -82,6 +84,7 @@ void app_update()
     // Apply material uniforms
     gs_gfxt_material_set_uniform(mat, "u_mvp", &mvp);
     gs_gfxt_material_set_uniform(mat, "u_tex", tex);
+    gs_gfxt_material_set_uniform(mat, "u_time", &_t);
 
     // Rendering
     gs_graphics_clear_desc_t clear = {.actions = &(gs_graphics_clear_action_t){.color = {0.05f, 0.05, 0.05, 1.f}}};

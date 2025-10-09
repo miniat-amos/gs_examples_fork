@@ -27,8 +27,9 @@ libs=(
 	-luser32 
 	-lshell32 
 	-lgdi32 
-	-lWinmm
+    -lWinmm
 	-lAdvapi32
+	-pthread
 )
 
 # Build

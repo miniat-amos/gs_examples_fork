@@ -30,6 +30,7 @@ libs=(
 	-lgdi32 
 	-lAdvapi32
 	-lwinmm
+	-pthread
 )
 
 # Build
