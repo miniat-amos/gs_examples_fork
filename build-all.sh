@@ -1,9 +1,9 @@
-declare -A PLATFORM
 # maps OS string to folder name
-declare -A PROCS=$(find . -name 'proc')
+declare -A PLATFORM
 # finds every directory named proc
-SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+declare -A PROCS=$(find . -name 'proc')
 # grabs script directory
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
 PLATFORM["msys"]="win"
 PLATFORM["darwin"]="osx"
