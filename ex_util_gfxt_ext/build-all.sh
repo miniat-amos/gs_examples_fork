@@ -1,3 +1,7 @@
+# Change the working directory to this script's directory
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+cd $SCRIPT_DIR
+
 # Build scripts are separated into directories by operating system.
 # The PLATFORM string identifies the correct directory for this system,
 # expected in the "proc" directory of each example.
