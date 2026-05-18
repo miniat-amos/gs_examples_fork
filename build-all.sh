@@ -1,7 +1,6 @@
-# finds every directory named proc
-declare -A PROCS=$(find . -name 'proc')
-# grabs script directory
+# Change the working directory to this script's directory
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+cd $SCRIPT_DIR
 
 # Build scripts are separated into directories by operating system.
 # The PLATFORM string identifies the correct directory for this system,
@@ -19,9 +18,11 @@ case "$OSTYPE" in
         ;;
 esac
 
-for dir in ${PROCS[@]}; do
-    echo ${dir:2:-4}
-    cd ${dir::-4}
-    bash proc/${PLATFORM}/*.sh
-    cd ${SCRIPT_DIR}
+# All examples and example collections are organized into immediate
+# subdirectories relative to this script and contain a 'build-all.sh'
+SCRIPTS=$(find . -mindepth 2 -maxdepth 2 -name 'build-all.sh')
+
+for s in $SCRIPTS ; do    
+    echo ${DIR:2:-12}
+    bash ${s}
 done
