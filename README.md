@@ -15,3 +15,19 @@ git clone --recursive https://github.com/MrFrenik/gs_examples
 ```
 git submodule update --remote --rebase --recursive
 ```
+
+## Building
+
+From the `gs_examples` root directory, you can build all the examples at once
+with the command:
+
+```
+bash build_all.sh
+```
+To build an individual example (or an example collection, such as `ex_demos`),
+just run the build script in its root.  For example to build `ex_demos` from the
+`gs_examples` root directory:
+
+```
+bash ./ex_demos/build-all.sh
+```
